@@ -6,6 +6,7 @@ npm install
 npm run dev
 
 ## Rudux
+
 #install redux toolkit
 npm install @reduxjs/toolkit
 
@@ -13,15 +14,19 @@ npm install @reduxjs/toolkit
 npm install react-redux
 
 ## Axios
+
 npm install axios
 
 ## React Router
+
 npm install react-router-dom
 
 ## Date
+
 npm install date-fns
 
 ## Tailwind Css
+
 #install with vite
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
@@ -37,7 +42,8 @@ content: [
 @tailwind components;
 @tailwind utilities;
 
-## Josn Server
+## Json Server
+
 #install
 npm install -g json-server
 #create data file
