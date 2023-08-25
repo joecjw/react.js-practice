@@ -2,16 +2,28 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { email: "", accessToken: "" },
+  initialState: {
+    accessToken: "",
+    refreshToken: "",
+    username: "",
+    email: "",
+    roles: [],
+  },
   reducers: {
     setCredentials: (state, action) => {
-      const { email, accessToken } = action.payload;
+      const { jwtToken, refreshToken, username, email, roles } = action.payload;
+      state.accessToken = jwtToken;
+      state.refreshToken = refreshToken;
+      state.username = username;
       state.email = email;
-      state.accessToken = accessToken;
+      state.roles = roles;
     },
     logout: (state, action) => {
-      state.email = "";
       state.accessToken = "";
+      state.refreshToken = "";
+      state.username = "";
+      state.email = "";
+      state.roles = [];
     },
   },
 });
