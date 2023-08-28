@@ -20,24 +20,32 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await login({
-      userNameEmail: userName.concat(":").concat(email),
-      password: pwd,
-    })
-      .unwrap()
-      .then((data) => {
-        console.log(data);
-        dispatch(setCredentials(data));
-        setUserName("");
-        setEmail("");
-        setPwd("");
-        navigate("/");
+    try {
+      await login({
+        userNameEmail: userName.concat(":").concat(email),
+        password: pwd,
       })
-      .catch((error) => {
-        console.log(error);
-        setErrMsg(error?.data?.message);
-      });
+        .unwrap()
+        .then((data) => {
+          console.log(data);
+          dispatch(setCredentials(data));
+          setUserName("");
+          setEmail("");
+          setPwd("");
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+          if (!error?.data?.message) {
+            setErrMsg(error?.status);
+          } else {
+            setErrMsg(error?.data?.message);
+          }
+        });
+    } catch (e) {
+      console.log(e);
+      setErrMsg("Something Went Wrong, Please Try Later");
+    }
   };
 
   const content = isLoading ? (
@@ -45,7 +53,11 @@ const LoginForm = () => {
   ) : (
     <section className="login relative min-h-fit min-w-fit w-1/2 p-4 flex-1 flex flex-col items-center border-4 border-white rounded-lg">
       <p
-        className={errMsg ? " text-red-600 font-bold " : " hidden"}
+        className={
+          errMsg
+            ? " border-2 p-1 mb-4 rounded border-pink-700 text-pink-700 font-bold "
+            : " hidden"
+        }
         aria-live="assertive"
       >
         {errMsg}
@@ -66,7 +78,7 @@ const LoginForm = () => {
             id="userName"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            autoComplete="off"
+            // autoComplete="off"
             required
             className="p-1 py-2 text-indigo-500 rounded w-full"
           />
@@ -83,7 +95,7 @@ const LoginForm = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            autoComplete="off"
+            // autoComplete="off"
             required
             className="p-1 py-2 text-indigo-500 rounded w-full"
           />
@@ -98,6 +110,7 @@ const LoginForm = () => {
             id="password"
             onChange={(e) => setPwd(e.target.value)}
             value={pwd}
+            // autoComplete="off"
             required
             className=" p-1 py-2 text-indigo-500 rounded w-full"
           />

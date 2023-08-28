@@ -9,3 +9,23 @@
   min-height: 100vh;
   min-width: 100vw;
 }
+
+.alert-model {
+  animation: popup 0.1s;
+}
+
+@keyframes popup {
+  0% {
+    
+    transform: scale(0.7);
+  }
+  33% {
+    transform: scale(0.8);
+  }
+  66% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

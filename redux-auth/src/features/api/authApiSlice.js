@@ -1,4 +1,4 @@
-import { publicApiSlice } from "./apiSlice";
+import { publicApiSlice } from "./publicApiSlice";
 
 export const publicAuthApiSlice = publicApiSlice.injectEndpoints({
   endpoints: (builder) => ({
