@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useLoginMutation } from "../features/api/authApiSlice";
-import { setCredentials } from "../features/authSlice";
+import { useNavigate } from "react-router-dom";
+import { setCredentials, useLoginMutation } from "../features/authSlice";
 
 const LoginForm = () => {
   const [userName, setUserName] = useState("");
@@ -80,7 +79,7 @@ const LoginForm = () => {
             onChange={(e) => setUserName(e.target.value)}
             // autoComplete="off"
             required
-            className="p-1 py-2 text-indigo-500 rounded w-full"
+            className="p-1 py-2 text-indigo-500 rounded w-full autofill:text-indigo-500"
           />
           <p className=" text-sm font-semibold text-white py-2">
             First and Last Name (Separated by ONE White Space)

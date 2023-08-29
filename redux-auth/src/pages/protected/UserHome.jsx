@@ -1,10 +1,13 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentAuth } from "../../features/authSlice";
+import { useGetUsersQuery } from "../../features/usersSlice";
 
 const UserHome = () => {
   const { accessToken, refreshToken, username, email, roles } =
     useSelector(selectCurrentAuth);
+
+  const  { data:users, isLoading, isError, error } = useGetUsersQuery();
 
   const showInfo = accessToken && refreshToken && username && email && roles;
 
