@@ -15,4 +15,4 @@ https://github.com/scrimba/learn-react-router-6
 `npm install @mui/icons-material`
 
 #### Responsive meta tag Config
-Add <meta name="viewport" content="initial-scale=1, width=device-width" /> to <head> element
+Add `<meta name="viewport" content="initial-scale=1, width=device-width" />` to `<head>` element
